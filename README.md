@@ -20,6 +20,39 @@ it, simply add the following line to your Podfile:
 pod "SearchInTwitter"
 ```
 
+### Code Snippets
+
+
+
+##### App Only Authentication
+
+```Objective-C
+
+NSString *key = @"API Key)";
+    NSString *secret =  @"API Secret";
+    
+    [[SearchTwitter sharedInstance] getOAuthTokenWithConsumerKey:key consumerSecret:secret withCallback:^(AuthTokenResult *result, NSError *error) {
+        
+        if (result.accessToken) {
+            [[SearchTwitter sharedInstance] setAccessToken:result.accessToken];
+        }
+    }];
+    
+```
+
+##### Search statuses
+```Objective-C
+[[SearchTwitter sharedInstance] searchTwitterFor:_searchTF.text withCallback:^(SearchTwitterResult *result, NSError *error) {
+        
+        if (!error && result.statuses) {
+            self.statusesList = result.statuses;
+            [_statusesTable reloadData];
+        }
+    }];
+```    
+    
+
+
 ## Author
 
 Gal, g2a2l2@gmail.com
