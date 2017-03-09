@@ -28,8 +28,8 @@ pod "SearchInTwitter"
 
 ```Objective-C
 
-NSString *key = @"API Key)";
-    NSString *secret =  @"API Secret";
+NSString *key = @"API Key";
+NSString *secret =  @"API Secret";
     
     [[SearchInTwitter sharedInstance] getOAuthTokenWithConsumerKey:key consumerSecret:secret withCallback:^(AuthTokenResult *result, NSError *error) {
         
@@ -40,17 +40,36 @@ NSString *key = @"API Key)";
     
 ```
 
+```swift
+  let key = "API Key"
+        let secret =  "API Secret"
+        
+        SearchInTwitter.sharedInstance().getOAuthToken(withConsumerKey: key, consumerSecret: secret, withCallback: { (AuthTokenResult, Error) in
+            
+            guard Error == nil else {
+                return
+            }
+            if ((AuthTokenResult?.accessToken) != nil) {
+                SearchInTwitter.sharedInstance().accessToken = AuthTokenResult?.accessToken
+            }
+        })
+```
+
+
 ##### Search statuses
 ```Objective-C
 [[SearchInTwitter sharedInstance] searchTwitterFor:_searchTF.text withCallback:^(SearchTwitterResult *result, NSError *error) {
         
-        if (!error && result.statuses) {
-            self.statusesList = result.statuses;
-            [_statusesTable reloadData];
-        }
+
     }];
 ```    
-    
+
+
+```swift
+   SearchInTwitter.sharedInstance().search(for: self.searchTF.text, withCallback: { (SearchTwitterResult, Error) in
+      
+        })
+```   
 
 
 ## Author
