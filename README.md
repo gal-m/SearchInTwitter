@@ -25,7 +25,7 @@ pod "SearchInTwitter"
 
 
 ##### App Only Authentication
-
+Objective-C :
 ```Objective-C
 
 NSString *key = @"API Key";
@@ -39,7 +39,7 @@ NSString *secret =  @"API Secret";
     }];
     
 ```
-
+swift :
 ```swift
   let key = "API Key"
         let secret =  "API Secret"
@@ -57,6 +57,7 @@ NSString *secret =  @"API Secret";
 
 
 ##### Search statuses
+Objective-C :
 ```Objective-C
 [[SearchInTwitter sharedInstance] searchTwitterFor:_searchTF.text withCallback:^(SearchTwitterResult *result, NSError *error) {
         
@@ -64,7 +65,7 @@ NSString *secret =  @"API Secret";
     }];
 ```    
 
-
+swift :
 ```swift
    SearchInTwitter.sharedInstance().search(for: self.searchTF.text, withCallback: { (SearchTwitterResult, Error) in
       
